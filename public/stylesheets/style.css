@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(199, 235, 252);
+}
+
+main {
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.url-input {
+  margin: auto;
+  padding: 8px 12px;
+  font-size: 22px
+}
+
+.link-img {
+  margin: 20px auto;
+  height: 30px;
+  display: block;
+}
