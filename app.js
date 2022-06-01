@@ -35,6 +35,17 @@ app.post('/shorten', async (req, res) => {
   }
 })
 
+app.get('/:url', async (req, res) => {
+  try {
+    const shortened_url = `http://${req.get('host')}/${req.params.url}`
+    const result = await Url.findOne({ shortened_url }).lean(res => res)
+    res.redirect(result.original_url)
+  }
+  catch (err) {
+    console.log('catch', err)
+  }
+})
+
 app.listen(port, () => {
   console.log(`Express server is running on http://localhost:${port}`)
 })
