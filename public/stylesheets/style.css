@@ -15,6 +15,18 @@ main {
   font-size: 22px
 }
 
+.url-output {
+  background-color: rgb(167, 220, 255);
+  padding: 10px;
+  border: 1.8px solid rgb(55, 118, 255);
+  border-radius: 12px;
+  color: rgb(9, 78, 206)
+}
+
+h2 {
+  margin: 8px;
+}
+
 .link-img {
   margin: 20px auto;
   height: 30px;
