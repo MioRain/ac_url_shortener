@@ -1,11 +1,14 @@
 <main>
   <h1>MioRain牌 - 短址產生器</h1>
   <form class="url-form" action="/shorten" method="post">
-    <input type="url" class="url-input" name="original_url" placeholder="http://......" value="{{ url.original_url }}"
+    <input type="url" class="url-input" name="original_url" placeholder="http://......" value="{{ original_url }}"
       required>
     <input type="image" class="link-img"
       src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="img">
   </form>
+  {{#if tipMessage}}
+  <h2 class="tip-message">{{tipMessage}}</h2>
+  {{/if}}
   {{#if result}}
   <button class="copy-btn">↓ Copy Short URL ↓</button>
   <h2 class="url-output">{{result.shortened_url}}</h2>

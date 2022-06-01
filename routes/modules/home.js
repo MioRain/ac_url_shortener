@@ -23,13 +23,20 @@ router.get('/:url', async (req, res) => {
 router.post('/shorten', async (req, res) => {
   try {
     const { original_url } = req.body
-    const url = {
-      original_url,
-      shortened_url: `http://${req.get('host')}/${getRandomAN(5)}`
+    if (original_url.includes(`http://${req.get('host')}`)) {
+      res.render('index', {
+        tipMessage: '請勿使用本網站的網址進行縮址',
+        original_url
+      })
+    } else {
+      const url = {
+        original_url,
+        shortened_url: `http://${req.get('host')}/${getRandomAN(5)}`
+      }
+      const result = await Url.findOne({ original_url }).lean(res => res)
+      result ? result : Url.create(url)
+      res.render('index', { result, url, original_url })
     }
-    const result = await Url.findOne({ original_url }).lean(res => res)
-    result ? result : Url.create(url)
-    res.render('index', { result, url })
   }
   catch (err) {
     console.log('catch', err)
