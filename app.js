@@ -32,6 +32,7 @@ app.post('/shorten', async (req, res) => {
   }
   catch (err) {
     console.log('catch', err)
+    res.render('error', { error: err.message })
   }
 })
 
@@ -43,6 +44,7 @@ app.get('/:url', async (req, res) => {
   }
   catch (err) {
     console.log('catch', err)
+    res.render('error', { error: err.message })
   }
 })
 

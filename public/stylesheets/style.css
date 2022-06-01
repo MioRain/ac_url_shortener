@@ -32,3 +32,11 @@ h2 {
   height: 30px;
   display: block;
 }
+
+.error-message {
+  margin: auto;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
