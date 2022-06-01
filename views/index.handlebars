@@ -7,10 +7,10 @@
       src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="img">
   </form>
   {{#if result}}
-  <h2>↓ Short URL ↓</h2>
+  <button class="copy-btn">↓ Copy Short URL ↓</button>
   <h2 class="url-output">{{result.shortened_url}}</h2>
   {{else}} {{#if url}}
-  <h2>↓ Short URL ↓</h2>
+  <button class="copy-btn">↓ Copy Short URL ↓</button>
   <h2 class="url-output">{{url.shortened_url}}</h2>
   {{/if}}
   {{/if}}
