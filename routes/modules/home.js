@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
 
 router.get('/:url', async (req, res) => {
   try {
-    const shortened_url = `http://${req.get('host')}/${req.params.url}`
-    const result = await Url.findOne({ shortened_url }).lean(res => res)
+    const shortened_url = req.params.url
+    const result = await Url.findOne({ shortened_url }).lean()
     res.redirect(result.original_url)
   }
   catch (err) {
@@ -21,9 +21,10 @@ router.get('/:url', async (req, res) => {
 })
 
 router.post('/shorten', async (req, res) => {
+  const basicUrl = `http://${req.get('host')}`
   try {
     const { original_url } = req.body
-    if (original_url.includes(`http://${req.get('host')}`)) {
+    if (original_url.includes(basicUrl)) {
       res.render('index', {
         tipMessage: '請勿使用本網站的網址進行縮址',
         original_url
@@ -31,11 +32,11 @@ router.post('/shorten', async (req, res) => {
     } else {
       const url = {
         original_url,
-        shortened_url: `http://${req.get('host')}/${getRandomAN(5)}`
+        shortened_url: getRandomAN(5)
       }
-      const result = await Url.findOne({ original_url }).lean(res => res)
+      const result = await Url.findOne({ original_url }).lean()
       result ? result : Url.create(url)
-      res.render('index', { result, url, original_url })
+      res.render('index', { result, url, basicUrl, original_url })
     }
   }
   catch (err) {

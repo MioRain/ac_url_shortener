@@ -11,10 +11,10 @@
   {{/if}}
   {{#if result}}
   <button class="copy-btn">↓ Copy Short URL ↓</button>
-  <h2 class="url-output">{{result.shortened_url}}</h2>
+  <h2 class="url-output">{{basicUrl}}/{{result.shortened_url}}</h2>
   {{else}} {{#if url}}
   <button class="copy-btn">↓ Copy Short URL ↓</button>
-  <h2 class="url-output">{{url.shortened_url}}</h2>
+  <h2 class="url-output">{{basicUrl}}/{{url.shortened_url}}</h2>
   {{/if}}
   {{/if}}
 </main>
